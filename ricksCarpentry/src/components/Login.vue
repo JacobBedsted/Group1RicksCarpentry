@@ -5,8 +5,8 @@
             <fieldset>
                 <legend>{{ legend }}</legend>
                 <label>
-                    Username: 
-                    <input type="text" v-model="username">
+                    Email: 
+                    <input type="text" v-model="email">
                 </label>
                 <label>
                     Password: 
@@ -39,7 +39,7 @@ export default {
     },
     data: function() {
         return{
-            username: "",
+            email: "",
             password: ""
         }
     },
@@ -50,11 +50,37 @@ export default {
     },
     methods: {
         login: function() {
-            store.state.auth = true;
-            store.state.username = this.username;
+            const formdata = new FormData();
+            var vm = this;
 
-            this.username = "";
-            this.password = "";
+            formdata.append("email",this.email);
+            formdata.append("password",this.password);
+
+            fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/login.php",{
+                method: "post",
+                body: formdata
+            })
+            .then(response => response.json())
+            .then(function(data){
+                if(data.status == "success") {
+                    vm.email = "";
+                    vm.password = "";
+
+                    store.commit("setAuth", {
+                        auth: data.auth,
+                        session: data.session
+                    });
+
+                    store.commit("setUser", {
+                        fname: data.fname,
+                        lname: data.lname,
+                        email: data.email,
+                        id: data.id
+                    });
+                } else {
+                    console.log(data);
+                }
+            });
         },
         logout: function() {
             store.state.auth = false;

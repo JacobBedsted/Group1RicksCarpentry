@@ -8,29 +8,24 @@ export default new Vuex.Store({
     msg: "Use this application to keep track of your inventory. Once you log in you will have access to change your inventory.",
     inventory: [],
     auth: false,
-    username: ""
-  },
-  getters: {
-    deansList: function(state) {
-      return state.newStudents.filter(function(newStudent){
-          return newStudent.GPA > 3.5;
-      });
-    },
-    deansListCount: function(state,getters) {
-      return getters.deansList.length;
+    session: "",
+    user: {
+      fname: "",
+      lname: "",
+      email: "",
+      id: null
     }
   },
   mutations: {
-    addStudent: function(state, payload) {
-      state.newStudents.push(Object.assign({}, payload));
+    setAuth: function(state, payload) {
+      state.auth = payload.auth;
+      state.session = payload.session;
     },
-    clearStudents: function(state) {
-      state.newStudents = []
-    }
-  },
-  actions: {
-    clearStudents: function(context) {
-      context.commit("clearStudents");
+    setUser: function(state, payload) {
+      state.user.fname = payload.fname;
+      state.user.lname = payload.lname;
+      state.user.email = payload.email;
+      state.user.id = payload.id;
     }
   },
   modules: {

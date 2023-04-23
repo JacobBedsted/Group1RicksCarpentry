@@ -24,7 +24,7 @@ export default {
                 return store.state.auth;
         },
         username: function() {
-            return store.state.username;
+            return store.state.user.fname + " " + store.state.user.lname;
         }
     }
 }
