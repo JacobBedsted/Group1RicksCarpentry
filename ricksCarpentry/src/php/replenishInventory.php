@@ -4,7 +4,9 @@ require_once "config.php";
 
 
 $id = $_POST["productID"];
-$qnty = $_POST["productQuantity"];
+$qnty = $_POST["productQty"];
+
+
 
 $conn = new mysqli($hn,$un,$pw,$db);
 
@@ -12,14 +14,14 @@ if($conn->connect_error) {
     $res["status"] = "error";
     $res["status_message"] = "MySQL connection error";
 } else {
-    $stmt = $conn->prepare("UPDATE products SET productQty= productQty+$qnty WHERE productID=?");
+    $stmt = $conn->prepare("UPDATE products SET productQty=productQty+? WHERE productID=?");
 
-    $stmt->bind_param("s",$id);
+    $stmt->bind_param("ii",$qnty,$id);
 
     if($stmt->execute()) {
-        $result = $stmt->get_result();
 
         $res["status"] = "success";
+        $res["status_message"] = $id;
 
     } else {
         $res["status"] = "error";

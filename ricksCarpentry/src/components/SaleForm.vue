@@ -5,15 +5,15 @@
             <fieldset>
                 <legend>Make Sale</legend>
                 <label>Product Id: <input type="number" v-model="saleForm.productId"></label>
-                <label>Customer Id: <input type="number" v-model="saleForm.customerId"></label>
-                <label>Sale Date: <input type="number" v-model="saleForm.salesDate"></label>
+                <label>Customer Name: <input type="text" v-model="saleForm.customerName"></label>
+                <label>Sale Date: <input type="date" v-model="saleForm.salesDate"></label>
                 <label>Quantity Sold: <input type="number" v-model="saleForm.salesQty"></label>
             </fieldset>
-            <button type="submit" v-on:click.prevent="makeSale()">Add Product</button>
+            <button type="submit" v-on:click.prevent="makeSale()">Make Sale</button>
         </form>
     </div>
 </template>
-  
+
 <script>
 import store from '@/store';
 
@@ -22,7 +22,7 @@ export default {
         return {
             saleForm: {
                 productId: null,
-                customerId: null,
+                customerName: "",
                 salesDate: "",
                 salesQty: null
             }
@@ -38,10 +38,10 @@ export default {
             const formdata = new FormData();
             var vm = this;
 
-            formdata.append("productID", vm.productId);
-            formdata.append("customerId", vm.customerId);
-            formdata.append("salesDate", vm.salesDate);
-            formdata.append("salesQty", vm.salesQty);
+            formdata.append("productID", vm.saleForm.productId);
+            formdata.append("customerName", vm.saleForm.customerName);
+            formdata.append("salesDate", vm.saleForm.salesDate);
+            formdata.append("salesQty", vm.saleForm.salesQty);
 
             fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/makeSale.php",{
                 method: "post",
@@ -51,7 +51,7 @@ export default {
             .then(function(data){
                 if(data.status == "success"){
                     vm.saleForm.productId = null;
-                    vm.saleForm.customerId = null;
+                    vm.saleForm.customerName = "";
                     vm.saleForm.salesDate = "";
                     vm.saleForm.salesQty = null;
                 } else {

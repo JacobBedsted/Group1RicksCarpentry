@@ -4,8 +4,8 @@
         <form id="replenishInventoryForm">
             <fieldset>
                 <legend>Product Replenish</legend>
-                <label>Product Id: <input type="number" v-model="replenishInventoryForm.productId"></label>
-                <label>Quantity Added: <input type="number" v-model="replenishInventoryForm.amountAdded"></label>
+                <label>Product Id: <input type="number" v-model="replenishInventoryForm.productID"></label>
+                <label>Quantity Added: <input type="number" v-model="replenishInventoryForm.productQty"></label>
             </fieldset>
             <button type="submit" v-on:click.prevent="replenishInventory()">Add Product</button>
         </form>
@@ -20,8 +20,8 @@ export default {
     data: function() {
         return {
             replenishInventoryForm: {
-                productId: null,
-                amountAdded: null
+                productID: null,
+                productQty: null
             }
         }
     },
@@ -35,8 +35,8 @@ export default {
             const formdata = new FormData();
             var vm = this;
 
-            formdata.append("productID", vm.productId);
-            formdata.append("productQuantity", vm.amountAdded);
+            formdata.append("productID", this.replenishInventoryForm.productID);
+            formdata.append("productQty", this.replenishInventoryForm.productQty);
 
             fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/replenishInventory.php",{
                 method: "post",
@@ -45,8 +45,8 @@ export default {
             .then(response => response.json())
             .then(function(data){
                 if(data.status == "success"){
-                    vm.replenishInventoryForm.productId = null;
-                    vm.replenishInventoryForm.amountAdded = null;
+                    vm.replenishInventoryForm.productID = null;
+                    vm.replenishInventoryForm.productQty = null;
                 } else {
                     console.log("Error");
                 }
