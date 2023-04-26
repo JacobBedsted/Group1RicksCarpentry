@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Inventory List</h2>
-        <table>
+        <table v-for="product in products" :key="product.id">
             <tr>
                 <th>Product ID</th>
                 <th>Product Name</th>
@@ -9,50 +9,65 @@
                 <th>Product Quantity</th>
             </tr>
             <tr>
-                <td>0</td>
-                <td>2x4 Lumber</td>
-                <td>7.82</td>
-                <td>10</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>2x6 Lumber</td>
-                <td>5.85</td>
-                <td>25</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1x2 Lumber</td>
-                <td>1.48</td>
-                <td>28</td>
+                <td>{{ product.productID }}</td>
+                <td>{{ product.productName }}</td>
+                <td>{{ product.productCost }}</td>
+                <td>{{ product.productQty }}</td>
             </tr>
         </table>
     </div>
 </template>
   
 <script>
-import store from '@/store';
-
 export default {
-    name: 'AuthHeader',
-    props: {
-        text: {
-            type: String,
-            default: "Authorization",
-            required: false
+    name: 'ShowInventory',
+    data: function() {
+        return {
+            products: []
         }
     },
-    computed: {
-        auth: function() {
-                return store.state.auth;
-        },
-        username: function() {
-            return store.state.username;
+    created: function() {
+        this.getProducts();
+    },
+    methods: {
+        getProducts: function() {
+            var vm = this;
+
+            fetch("http://localhost/4_26/ricksCarpentry/src/php/getProducts.php")
+            .then(response => response.json())
+            .then(function(data){
+                vm.products = data.products;
+            })
         }
     }
 }
 </script>
 
 <style scoped>
+
+    body{
+        background-color: lightskyblue;
+    }
+    fieldset {
+        border-radius: 25px;
+        background-color: rgb(122, 121, 120);
+        border: 1px solid rgb(84, 56, 220);
+    }
+
+    legend {
+        background-color: rgb(84, 56, 220);
+        color: white;
+        padding: 5px;
+        border: solid 1px silver;
+    }
+    label{
+        display: block;
+        margin-bottom: 10px;
+        color: white;
+    }
+    button{
+        color: white;
+        background-color: rgb(84, 56, 220);
+    }
 
 </style>
