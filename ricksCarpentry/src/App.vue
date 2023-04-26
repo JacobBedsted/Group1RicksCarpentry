@@ -9,6 +9,7 @@
       <router-link to="/Login">Login</router-link> |
       <router-link to="/ShowInventory">Show Inventory</router-link> |
       <span v-if="auth"><router-link to="/SaleForm">Sale Form</router-link> | </span>
+      <span v-if="auth"><router-link to="/SaleReport">Sale Report</router-link> | </span>
       <span v-if="auth"><router-link to="/ReplenishInventory">Replenish Inventory</router-link> | </span>
     </nav>
     <router-view/>
