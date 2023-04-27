@@ -43,7 +43,7 @@ export default {
             formdata.append("salesDate", vm.saleForm.salesDate);
             formdata.append("salesQty", vm.saleForm.salesQty);
 
-            fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/makeSale.php",{
+            fetch("http://localhost/4_26/ricksCarpentry/src/php/makeSale.php",{
                 method: "post",
                 body: formdata
             })
@@ -65,5 +65,30 @@ export default {
 </script>
 
 <style scoped>
+
+    body{
+        background-color: lightskyblue;
+    }
+    fieldset {
+        border-radius: 25px;
+        background-color: rgb(122, 121, 120);
+        border: 1px solid rgb(84, 56, 220);
+    }
+
+    legend {
+        background-color: rgb(84, 56, 220);
+        color: white;
+        padding: 5px;
+        border: solid 1px silver;
+    }
+    label{
+        display: block;
+        margin-bottom: 10px;
+        color: white;
+    }
+    button{
+        color: white;
+        background-color: rgb(84, 56, 220);
+    }
 
 </style>

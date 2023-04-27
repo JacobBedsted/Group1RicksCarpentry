@@ -56,7 +56,7 @@ export default {
             formdata.append("email",this.email);
             formdata.append("password",this.password);
 
-            fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/login.php",{
+            fetch("http://localhost/4_26/ricksCarpentry/src/php/login.php",{
                 method: "post",
                 body: formdata
             })
