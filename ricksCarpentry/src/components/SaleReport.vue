@@ -67,7 +67,8 @@ export default {
             formdata.append("firstDay", vm.saleReportForm.firstDate);
             formdata.append("secondDay", vm.saleReportForm.secondDate);
 
-            fetch("http://localhost/4_26/ricksCarpentry/src/php/salesReport.php",{
+            fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/salesReport.php",{
+
                 method: "post",
                 body: formdata
             })
@@ -90,7 +91,6 @@ export default {
 </script>
 
 <style scoped>
-
     body{
         background-color: lightskyblue;
     }
@@ -115,5 +115,4 @@ export default {
         color: white;
         background-color: rgb(84, 56, 220);
     }
-
 </style>

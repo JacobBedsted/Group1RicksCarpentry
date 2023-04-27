@@ -33,7 +33,7 @@ export default {
         getProducts: function() {
             var vm = this;
 
-            fetch("http://localhost/4_26/ricksCarpentry/src/php/getProducts.php")
+            fetch("http://localhost/Systems%20Final/ricksCarpentry/src/php/getProducts.php")
             .then(response => response.json())
             .then(function(data){
                 vm.products = data.products;
