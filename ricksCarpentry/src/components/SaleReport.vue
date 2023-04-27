@@ -15,20 +15,40 @@
         <p>{{ oldSaleReportForm.firstDate }} - {{ oldSaleReportForm.secondDate }}</p>
             <table>
                 <tr>
-                    <th>Product 1</th>
-                    <th>Product 2</th>
-                    <th>Product 3</th>
-                    <th>Product 4</th>
-                    <th>Product 5</th>
-                    <th>Product 6</th>
+                    <th>2x4 Lumber</th>
+                    <th>2x6 Lumber</th>
+                    <th>1x2 Lumber</th>
+                    <th>Pre-Finished Top</th>
+                    <th>Shims</th>
+                    <th>Wood Glue</th>
                 </tr>
                 <tr>
-                    <td>{{ sales[0] }}</td>
-                    <td>{{ sales[1] }}</td>
-                    <td>{{ sales[2] }}</td>
-                    <td>{{ sales[3] }}</td>
-                    <td>{{ sales[4] }}</td>
-                    <td>{{ sales[5] }}</td>
+                    <td v-if="sales[0]>0">{{ sales[0] }}</td>
+                    <td v-else>0</td>
+                    <td v-if="sales[1]>0">{{ sales[1] }}</td>
+                    <td v-else>0</td>
+                    <td v-if="sales[2]>0">{{ sales[2] }}</td>
+                    <td v-else>0</td>
+                    <td v-if="sales[3]>0">{{ sales[3] }}</td>
+                    <td v-else>0</td>
+                    <td v-if="sales[4]>0">{{ sales[4] }}</td>
+                    <td v-else>0</td>
+                    <td v-if="sales[5]>0">{{ sales[5] }}</td>
+                    <td v-else>0</td>
+                </tr>
+                <tr>
+                    <td v-if="revenue[0]>0">$ {{ revenue[0] }}</td>
+                    <td v-else>$ 0</td>
+                    <td v-if="revenue[1]>0">$ {{ revenue[1] }}</td>
+                    <td v-else>$ 0</td>
+                    <td v-if="revenue[2]>0">$ {{ revenue[2] }}</td>
+                    <td v-else>$ 0</td>
+                    <td v-if="revenue[3]>0">$ {{ revenue[3] }}</td>
+                    <td v-else>$ 0</td>
+                    <td v-if="revenue[4]>0">$ {{ revenue[4] }}</td>
+                    <td v-else>$ 0</td>
+                    <td v-if="revenue[5]>0">$ {{ revenue[5] }}</td>
+                    <td v-else>$ 0</td>
                 </tr>
             </table>
         </div>
@@ -51,7 +71,8 @@ export default {
                 firstDate: "",
                 secondDate: ""
             },
-            sales: []
+            sales: [],
+            revenue: []
         }
     },
     computed: {
@@ -76,6 +97,7 @@ export default {
             .then(function(data){
                 if(data.status == "success"){
                     vm.sales = data.sales;
+                    vm.revenue = data.revenue;
                     vm.oldSaleReportForm.firstDate = vm.saleReportForm.firstDate;
                     vm.oldSaleReportForm.secondDate = vm.saleReportForm.secondDate;
                     vm.saleReportForm.firstDate = "";

@@ -1,14 +1,14 @@
 <template>
     <div>
         <h2>Inventory List</h2>
-        <table v-for="product in products" :key="product.id">
+        <table>
             <tr>
                 <th>Product ID</th>
                 <th>Product Name</th>
                 <th>Product Cost</th>
                 <th>Product Quantity</th>
             </tr>
-            <tr>
+            <tr v-for="product in products" :key="product.id">
                 <td>{{ product.productID }}</td>
                 <td>{{ product.productName }}</td>
                 <td>{{ product.productCost }}</td>
