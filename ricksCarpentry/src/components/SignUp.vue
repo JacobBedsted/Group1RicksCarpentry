@@ -63,8 +63,8 @@ export default {
                         session: data.session
                     });
                     store.commit("setUser", {
-                        fName: data.fName,
-                        lName: data.lName,
+                        fname: data.fname,
+                        lname: data.lname,
                         email: data.email,
                         id: data.id
                     });
@@ -85,6 +85,11 @@ export default {
     fieldset {
         background-color: tan;
         border: 1px solid green;
+    }
+
+    form {
+        padding-left: 40%;
+        padding-right: 40%;
     }
 
     legend {

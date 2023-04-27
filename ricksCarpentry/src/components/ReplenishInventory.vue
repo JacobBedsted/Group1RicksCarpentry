@@ -64,11 +64,11 @@ export default {
     fieldset {
         border-radius: 25px;
         background-color: rgb(122, 121, 120);
-        border: 1px solid rgb(84, 56, 220);
+        border: 1px solid darkgreen;
     }
 
     legend {
-        background-color: rgb(84, 56, 220);
+        background-color: darkgreen;
         color: white;
         padding: 5px;
         border: solid 1px silver;
@@ -80,7 +80,7 @@ export default {
     }
     button{
         color: white;
-        background-color: rgb(84, 56, 220);
+        background-color: darkgreen;
     }
 
 </style>

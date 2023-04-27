@@ -91,6 +91,12 @@ export default {
 </script>
 
 <style scoped>
+
+    form {
+        padding-left: 40%;
+        padding-right: 40%;
+    }
+    
     fieldset {
         background-color: tan;
         border: 1px solid green;

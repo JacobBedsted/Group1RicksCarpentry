@@ -11,9 +11,10 @@
             <tr v-for="product in products" :key="product.id">
                 <td>{{ product.productID }}</td>
                 <td>{{ product.productName }}</td>
-                <td>{{ product.productCost }}</td>
+                <td>${{ product.productCost }}</td>
                 <td>{{ product.productQty }}</td>
             </tr>
+            
         </table>
     </div>
 </template>
@@ -51,11 +52,11 @@ export default {
     fieldset {
         border-radius: 25px;
         background-color: rgb(122, 121, 120);
-        border: 1px solid rgb(84, 56, 220);
+        border: 1px solid darkgreen;
     }
 
     legend {
-        background-color: rgb(84, 56, 220);
+        background-color: darkgreen;
         color: white;
         padding: 5px;
         border: solid 1px silver;
@@ -67,7 +68,18 @@ export default {
     }
     button{
         color: white;
-        background-color: rgb(84, 56, 220);
+        background-color: darkgreen;
+    }
+
+    table{
+        width: 50%;
+        margin: auto;
+        background-color: white;
+        border: solid;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
     }
 
 </style>

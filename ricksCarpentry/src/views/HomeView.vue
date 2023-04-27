@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/woodworking.png">
     <HelloWorld/>
+    <img alt="Vue logo" src="../assets/tool.png">
   </div>
 </template>
 

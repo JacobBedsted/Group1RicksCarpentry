@@ -65,6 +65,13 @@ if($conn->connect_error) {
         $sales[] = $product4;
         $sales[] = $product5;
 
+        $revenue0 = round($revenue0,2);
+        $revenue1 = round($revenue1,2);
+        $revenue2 = round($revenue2,2);
+        $revenue3 = round($revenue3,2);
+        $revenue4 = round($revenue4,2);
+        $revenue5 = round($revenue5,2);
+
         $revenue[] = $revenue0;
         $revenue[] = $revenue1;
         $revenue[] = $revenue2;
